@@ -1,0 +1,12 @@
+{
+    "scripts": {
+        "test": "wdio wdio.conf.ts"
+    },
+    "devDependencies": {
+        "@wdio/cli": "^8.27.0",
+        "dotenv": "^16.3.1",
+        "mocha": "^10.2.0",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.3.3"
+    }
+}
