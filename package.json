@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "test": "wdio wdio.conf.ts"
+        "frontend": "wdio wdio.conf.ts --suite frontend"
     },
     "devDependencies": {
         "@wdio/cli": "^8.27.0",

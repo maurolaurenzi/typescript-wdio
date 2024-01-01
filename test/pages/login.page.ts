@@ -10,6 +10,5 @@ export default class LoginPage{
         await basic.waitAndClick($(loginScreen.buttons.submit));
         await basic.waitAndSetValue($(loginScreen.fields.password), process.env.PASSWORD);
         await basic.waitAndClick($(loginScreen.buttons.submit));
-        await browser.pause(3000);
     }
 }
