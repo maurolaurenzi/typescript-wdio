@@ -1,21 +1,20 @@
 import ProfileScreen from "../locators/profile.screen";
-import Basic from "../../commons/basics";
+import {waitAndClick, waitAndSetValue} from "../../commons/basics";
 const profileScreen = new ProfileScreen();
-const basic = new Basic();
 export default class ProfilePage{
     async createList(title: string, description: string, films: [string]){
-        await basic.waitAndClick($(profileScreen.buttons.lists));
-        await basic.waitAndClick($(profileScreen.buttons.createList));
-        await basic.waitAndSetValue($(profileScreen.fields.listTitle), title);
-        await basic.waitAndSetValue($(profileScreen.fields.listDescription), description);
+        await waitAndClick($(profileScreen.buttons.lists));
+        await waitAndClick($(profileScreen.buttons.createList));
+        await waitAndSetValue($(profileScreen.fields.listTitle), title);
+        await waitAndSetValue($(profileScreen.fields.listDescription), description);
         for(const film of films){
-            await basic.waitAndSetValue($(profileScreen.fields.addFilm), film);
-            await basic.waitAndClick($(profileScreen.dropdownOptions.film(film)));
+            await waitAndSetValue($(profileScreen.fields.addFilm), film);
+            await waitAndClick($(profileScreen.dropdownOptions.film(film)));
         }
-        await basic.waitAndClick($(profileScreen.buttons.save));
+        await waitAndClick($(profileScreen.buttons.save));
     }
     async listPresentInProfile(title: string){
-        await basic.waitAndClick($(profileScreen.buttons.lists));
+        await waitAndClick($(profileScreen.buttons.lists));
         try{
             await $(profileScreen.tiles.list(title)).waitForDisplayed();
             return await $(profileScreen.tiles.list(title)).isDisplayed();
@@ -25,7 +24,7 @@ export default class ProfilePage{
         }
     }
     async filmPresentInList(listTitle: string, filmLink: string){
-        await basic.waitAndClick($(profileScreen.tiles.list(listTitle)));
+        await waitAndClick($(profileScreen.tiles.list(listTitle)));
         try{
             await $(profileScreen.tiles.filmIList(filmLink)).waitForDisplayed();
             return await $(profileScreen.tiles.filmIList(filmLink)).isDisplayed();
@@ -35,9 +34,9 @@ export default class ProfilePage{
         }
     }
     async deleteList(listTitle: string){
-        await basic.waitAndClick($(profileScreen.buttons.editList(listTitle)));
-        await basic.waitAndClick($(profileScreen.buttons.deleteList));
-        await basic.waitAndClick($(profileScreen.buttons.confirmDeletion));
-        await basic.waitAndClick($(profileScreen.buttons.goToNowShowing));
+        await waitAndClick($(profileScreen.buttons.editList(listTitle)));
+        await waitAndClick($(profileScreen.buttons.deleteList));
+        await waitAndClick($(profileScreen.buttons.confirmDeletion));
+        await waitAndClick($(profileScreen.buttons.goToNowShowing));
     }
 }

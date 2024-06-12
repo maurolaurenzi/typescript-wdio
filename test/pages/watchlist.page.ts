@@ -1,7 +1,6 @@
 import WatchlistScreen from "../locators/watchlist.screen";
-import Basic from "../../commons/basics";
+import {waitAndClick} from "../../commons/basics";
 const watchlistScreen = new WatchlistScreen();
-const basic = new Basic();
 export default class WatchlistPage{
     async filmPresentInWatchlist(filmLink: string){
         try{
@@ -13,6 +12,6 @@ export default class WatchlistPage{
         }
     }
     async goToFilm(filmLink: string){
-        await basic.waitAndClick($(watchlistScreen.tiles.filmInWatchlist(filmLink)));
+        await waitAndClick($(watchlistScreen.tiles.filmInWatchlist(filmLink)));
     }
 }
